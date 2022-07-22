@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import * as path from "path"
 import react from '@vitejs/plugin-react'
 
-const join = (filePath: string) => path.join(__dirname, filePath)
+export const join = (filePath: string) => path.join(__dirname, filePath)
 
 // https://vitejs.dev/config/
 export default defineConfig({

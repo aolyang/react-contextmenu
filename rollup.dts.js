@@ -1,16 +1,17 @@
-import * as path from "path";
-import { default as dts } from "rollup-plugin-dts";
-import { defineConfig } from "rollup";
+const path = require("path")
+const { default: dts } = require("rollup-plugin-dts")
+const { rollup } = require("rollup")
 
-const join = (filePath: string) => path.join(__dirname, filePath)
+const join = (filepath) => path.join(__dirname, filepath);
 
-export default defineConfig({
-  input: join("dist_types/index.d.ts"),
-  external: ["react"],
-  plugins: [dts()],
-  output: {
-    file: join("dist/index.d.ts"),
-    format: "es"
-  }
-})
-
+(async () => {
+  const bundle = await rollup({
+    input: join(`dist_types/index.d.ts`),
+    external: ["react"],
+    plugins: [dts()]
+  })
+  await bundle.write({
+    file: join(`dist/index.d.ts`), format: "es"
+  })
+  await bundle.close()
+})()

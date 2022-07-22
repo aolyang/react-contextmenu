@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
+    "module": "ESNext",
+    "declarationMap": true,
     "declaration": true,
-    "outDir": "dist/types"
+    "outDir": "dist_types",
+    "moduleResolution": "Node"
   },
   "include": ["lib/**/*.ts"]
 }
